@@ -6,10 +6,10 @@ import { TiEdit } from "react-icons/ti";
 const Todo = (props) => {
 
   return props.todos.map((todo, index) => (
-    <div key={index}>
+    <div key={todo.id}>
       <div>{todo.text}</div>
       <div>
-        <RiCloseCircleLine />
+        <RiCloseCircleLine onClick={(() => props.removeTodo(todo.id))}/>
         <TiEdit />
       </div>
     </div>
