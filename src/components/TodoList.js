@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import TodoForm from "./TodoForm";
+import Todo from "./Todo";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -18,6 +19,7 @@ const TodoList = () => {
     <Fragment>
         <h1>What's the plan for today?</h1>
       <TodoForm onAddTodo={addingTodoHandler} />
+      <Todo todos={todos}/>
     </Fragment>
   );
 };
