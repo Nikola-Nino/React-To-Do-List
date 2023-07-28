@@ -6,17 +6,24 @@ const TodoForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    setInput("")
   };
 
-  const inputChangeHandler = event => {
-    setInput(event.target.value)
+  const inputChangeHandler = (event) => {
+    setInput(event.target.value);
 
-    console.log(input)
-  }
+    console.log(input);
+  };
 
   return (
     <form onSubmit={submitHandler}>
-      <input type="text" placeholder="Add a todo" name="text" value={input} onChange={inputChangeHandler} />
+      <input
+        type="text"
+        placeholder="Add a todo"
+        name="text"
+        value={input}
+        onChange={inputChangeHandler}
+      />
       <button>Add todo</button>
     </form>
   );
