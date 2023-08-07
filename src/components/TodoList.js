@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import TodoForm from "./TodoForm";
+import Todo from "./Todo";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -14,10 +15,29 @@ const TodoList = () => {
     console.log(...todos);
   };
 
+  const updateHandler = (todoId, newValue) => {
+    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+      return;
+    }
+    setTodos((prev) =>
+      prev.map((item) => (item.id === todoId ? newValue : item))
+    );
+  };
+
+  const removeTodoHandler = (id) => {
+    const removeArr = [...todos].filter((todo) => todo.id !== id);
+    setTodos(removeArr);
+  };
+
   return (
     <Fragment>
-        <h1>What's the plan for today?</h1>
+      <h1>What's the plan for today?</h1>
       <TodoForm onAddTodo={addingTodoHandler} />
+      <Todo
+        todos={todos}
+        removeTodo={removeTodoHandler}
+        updateTodo={updateHandler}
+      />
     </Fragment>
   );
 };

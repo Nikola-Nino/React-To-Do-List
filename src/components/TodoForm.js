@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 
 const TodoForm = (props) => {
   const [input, setInput] = useState("");
@@ -14,19 +14,33 @@ const TodoForm = (props) => {
       id: Math.floor(Math.random() * 10000),
       text: input,
     });
-    setInput('');
+    setInput("");
   };
 
   return (
     <form onSubmit={submitHandler}>
-      <input
-        type="text"
-        placeholder="Add a todo"
-        name="text"
-        value={input}
-        onChange={inputChangeHandler}
-      />
-      <button>Add todo</button>
+      {props.edit ? (
+        <Fragment>
+          <input
+            placeholder="Update your item"
+            value={input}
+            onChange={inputChangeHandler}
+            name="text"
+          />
+          <button onClick={submitHandler}>Update</button>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <input
+            type="text"
+            placeholder="Add a todo"
+            name="text"
+            value={input}
+            onChange={inputChangeHandler}
+          />
+          <button onClick={submitHandler}>Add todo</button>
+        </Fragment>
+      )}
     </form>
   );
 };
