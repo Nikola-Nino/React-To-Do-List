@@ -13,6 +13,14 @@ body {
     rgba(100, 115, 255, 1) 100%
   );
 }
+@media (max-width: 767px) {
+  body {
+    background: linear-gradient(
+      rgba(48, 16, 255, 0.8) 100%,
+      rgba(100, 115, 255, 0.8) 100%
+    );
+  }
+}
 
 h1 {
   margin: 32px 0;

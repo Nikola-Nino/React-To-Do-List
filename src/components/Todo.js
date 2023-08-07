@@ -24,9 +24,17 @@ const Todo = (props) => {
 
   return props.todos.map((todo, index) => (
     <Fragment>
-      <div onClick={() => props.completeTodo(todo.id)} className={todo.isComplete ? `${classes["todo-row"]} ${classes["complete"]}`: classes["todo-row"]}
-        key={index} >
-        <div key={todo.id}>{todo.text}</div>{" "}
+      <div
+        className={
+          todo.isComplete
+            ? `${classes["todo-row"]} ${classes["complete"]}`
+            : classes["todo-row"]
+        }
+        key={index}
+      >
+        <div onClick={() => props.completeTodo(todo.id)} key={todo.id}>
+          {todo.text}
+        </div>
         <div className={classes.icons}>
           <RiCloseCircleLine
             className={classes["delete-icon"]}

@@ -27,9 +27,11 @@ const TodoForm = (props) => {
             value={input}
             onChange={inputChangeHandler}
             name="text"
-            className={classes["todo-input edit"]}
+            className={`${classes["todo-input"]} ${classes["edit"]}`}
           />
-          <button className={classes["todo-button edit"]} onClick={submitHandler}>Update</button>
+          <button className={classes["todo-button"]} onClick={submitHandler}>
+            Update
+          </button>
         </Fragment>
       ) : (
         <Fragment>
@@ -40,9 +42,10 @@ const TodoForm = (props) => {
             value={input}
             onChange={inputChangeHandler}
             className={classes["todo-input"]}
-
           />
-          <button className={classes["todo-button"]} onClick={submitHandler}>Add todo</button>
+          <button className={classes["todo-button"]} onClick={submitHandler}>
+            Add todo
+          </button>
         </Fragment>
       )}
     </form>
