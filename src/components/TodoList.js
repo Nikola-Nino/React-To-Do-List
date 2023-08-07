@@ -29,11 +29,22 @@ const TodoList = () => {
     setTodos(removeArr);
   };
 
+  const completeTodoHandler = (id) => {
+    let updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.isComplete = !todo.isComplete;
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
+
   return (
     <Fragment>
       <h1>What's the plan for today?</h1>
       <TodoForm onAddTodo={addingTodoHandler} />
       <Todo
+        completeTodo={completeTodoHandler}
         todos={todos}
         removeTodo={removeTodoHandler}
         updateTodo={updateHandler}
