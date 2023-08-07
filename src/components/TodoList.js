@@ -15,16 +15,29 @@ const TodoList = () => {
     console.log(...todos);
   };
 
-  const removeTodoHandler = id => {
-    const removeArr = [...todos].filter(todo => todo.id !== id)
-    setTodos(removeArr)
-  }
+  const updateHandler = (todoId, newValue) => {
+    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+      return;
+    }
+    setTodos((prev) =>
+      prev.map((item) => (item.id === todoId ? newValue : item))
+    );
+  };
+
+  const removeTodoHandler = (id) => {
+    const removeArr = [...todos].filter((todo) => todo.id !== id);
+    setTodos(removeArr);
+  };
 
   return (
     <Fragment>
-        <h1>What's the plan for today?</h1>
+      <h1>What's the plan for today?</h1>
       <TodoForm onAddTodo={addingTodoHandler} />
-      <Todo todos={todos} removeTodo={removeTodoHandler}/>
+      <Todo
+        todos={todos}
+        removeTodo={removeTodoHandler}
+        updateTodo={updateHandler}
+      />
     </Fragment>
   );
 };
