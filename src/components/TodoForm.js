@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import classes from "./TodoForm.module.css";
 
 const TodoForm = (props) => {
   const [input, setInput] = useState("");
@@ -18,7 +19,7 @@ const TodoForm = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className={classes["todo-form"]} onSubmit={submitHandler}>
       {props.edit ? (
         <Fragment>
           <input
@@ -26,8 +27,9 @@ const TodoForm = (props) => {
             value={input}
             onChange={inputChangeHandler}
             name="text"
+            className={classes["todo-input edit"]}
           />
-          <button onClick={submitHandler}>Update</button>
+          <button className={classes["todo-button edit"]} onClick={submitHandler}>Update</button>
         </Fragment>
       ) : (
         <Fragment>
@@ -37,8 +39,10 @@ const TodoForm = (props) => {
             name="text"
             value={input}
             onChange={inputChangeHandler}
+            className={classes["todo-input"]}
+
           />
-          <button onClick={submitHandler}>Add todo</button>
+          <button className={classes["todo-button"]} onClick={submitHandler}>Add todo</button>
         </Fragment>
       )}
     </form>
