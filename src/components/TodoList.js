@@ -32,7 +32,10 @@ const TodoList = () => {
   const completeTodoHandler = (id) => {
     let updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
-        todo.isComplete = !todo.isComplete;
+        return {
+          ...todo,
+          isComplete: !todo.isComplete,
+        };
       }
       return todo;
     });
